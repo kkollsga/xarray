@@ -270,7 +270,7 @@ class DataStructure:
     create_example: str
     example_var_name: str
     numeric_only: bool = False
-    see_also_modules: tuple[str, ...] = tuple
+    see_also_modules: tuple[str, ...] = ()
 
 
 class Method:
@@ -323,6 +323,9 @@ class AggregationGenerator:
         self.preamble = self.definition_preamble.format(
             obj=self.datastructure.name, cls=self.cls
         )
+
+    def generate_code(self, method: Method, has_keep_attrs: bool) -> str:
+        raise NotImplementedError("Subclasses must implement generate_code")
 
     def generate_methods(self):
         yield [self.preamble]

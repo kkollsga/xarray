@@ -143,6 +143,7 @@ module = [
   "cloudpickle.*",
   "cubed.*",
   "cupy.*",
+  "flox.*",
   "fsspec.*",
   "h5netcdf.*",
   "h5py.*",

@@ -7304,7 +7304,7 @@ class Dataset(
             is_sorted = idx.is_monotonic_increasing
             shape = tuple(lev.size for lev in idx.levels)
         else:
-            coords = np.arange(idx.size).reshape(1, -1)
+            coords = np.arange(idx.size).reshape(1, -1)  # type: ignore[assignment]
             is_sorted = True
             shape = (idx.size,)
 

@@ -1924,7 +1924,7 @@ class TestDataset:
         + (
             [
                 pytest.param(
-                    pd.array([1, 1, None], dtype="int64[pyarrow]"), id="int64[pyarrow]"
+                    pd.array([1, 1, None], dtype="int64[pyarrow]"), id="int64[pyarrow]"  # type: ignore[call-overload]
                 )
             ]
             if has_pyarrow

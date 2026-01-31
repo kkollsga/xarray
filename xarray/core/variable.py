@@ -70,7 +70,7 @@ BASIC_INDEXING_TYPES = integer_types + (slice,)
 UNSUPPORTED_EXTENSION_ARRAY_TYPES = (
     pd.arrays.DatetimeArray,
     pd.arrays.TimedeltaArray,
-    pd.arrays.NumpyExtensionArray,  # type: ignore[attr-defined]
+    pd.arrays.NumpyExtensionArray,
 )
 
 if TYPE_CHECKING:

@@ -428,7 +428,7 @@ def create_test_data(
         if has_pyarrow:
             obj["var5"] = (
                 "dim1",
-                pd.array(
+                pd.array(  # type: ignore[call-overload]
                     rs.integers(1, 10, size=dim_sizes[0]).tolist(),
                     dtype="int64[pyarrow]",
                 ),

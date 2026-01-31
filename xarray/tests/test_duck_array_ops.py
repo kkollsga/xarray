@@ -220,7 +220,7 @@ class TestOps:
 
     @requires_pyarrow
     def test_extension_array_copy_arrow_type(self):
-        arr = pd.array([pd.NA, 1, 2], dtype="int64[pyarrow]")
+        arr = pd.array([pd.NA, 1, 2], dtype="int64[pyarrow]")  # type: ignore[call-overload]
         # Relying on the `__getattr__` of `PandasExtensionArray` to do the deep copy
         # recursively only fails for `int64[pyarrow]` and similar types so this
         # test ensures that copying still works there.

@@ -20,13 +20,13 @@ if TYPE_CHECKING:
     try:
         from dask.array import Array as DaskArray
     except ImportError:
-        DaskArray = np.ndarray[Any, Any]
+        DaskArray = np.ndarray[Any, Any]  # type: ignore[misc, assignment]
 
 
 dask_available = module_available("dask")
 
 
-class DaskManager(ChunkManagerEntrypoint["DaskArray"]):
+class DaskManager(ChunkManagerEntrypoint["DaskArray"]):  # type: ignore[type-var]
     array_cls: type[DaskArray]
     available: bool = dask_available
 
@@ -95,7 +95,7 @@ class DaskManager(ChunkManagerEntrypoint["DaskArray"]):
 
         return da
 
-    def reduction(
+    def reduction(  # type: ignore[override]
         self,
         arr: T_ChunkedArray,
         func: Callable[..., Any],
@@ -117,7 +117,7 @@ class DaskManager(ChunkManagerEntrypoint["DaskArray"]):
             keepdims=keepdims,
         )  # type: ignore[no-untyped-call]
 
-    def scan(
+    def scan(  # type: ignore[override]
         self,
         func: Callable[..., Any],
         binop: Callable[..., Any],
@@ -263,7 +263,7 @@ class DaskManager(ChunkManagerEntrypoint["DaskArray"]):
             chunks = "auto"
         if chunks != "auto":
             raise NotImplementedError("Only chunks='auto' is supported at present.")
-        return dask.array.shuffle(x, indexer, axis, chunks="auto")
+        return dask.array.shuffle(x, indexer, axis, chunks="auto")  # type: ignore[no-any-return]
 
     def get_auto_chunk_size(self) -> int:
         from dask import config as dask_config

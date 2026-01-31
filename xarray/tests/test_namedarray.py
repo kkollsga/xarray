@@ -246,7 +246,7 @@ class TestNamedArray(NamedArraySubclassobjects):
     def test_from_array_with_0d_object(self) -> None:
         data = np.empty((), dtype=object)
         data[()] = (10, 12, 12)
-        narr = from_array((), data)
+        narr: NamedArray[Any, Any] = from_array((), data)
         np.array_equal(np.asarray(narr.data), data)
 
     # TODO: Make xr.core.indexing.ExplicitlyIndexed pass as a subclass of_arrayfunction_or_api
